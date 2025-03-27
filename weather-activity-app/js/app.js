@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // elements to be using in project so far
+    // DOM elements
     const locationInput = document.getElementById('location');
     const getLocationBtn = document.getElementById('get-location');
     const searchBtn = document.getElementById('search');
@@ -14,12 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const weatherContainer = document.getElementById('weather-container');
     const activitiesContainer = document.getElementById('activities-container');
     
-    // Event listeners added so that the scriptcould read them 
+    // Event listeners
     getLocationBtn.addEventListener('click', getUserLocation);
     searchBtn.addEventListener('click', searchLocation);
     applyFiltersBtn.addEventListener('click', filterActivities);
     
-    // Get user's location using geolocation API to know the exact place of the user or the place entered
+    // Get user's location using geolocation API
     function getUserLocation() {
         if (navigator.geolocation) {
             getLocationBtn.textContent = 'Getting location...';
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 position => {
                     const { latitude, longitude } = position.coords;
                     
-                    // Getting city name using coordinates given by openweather apis
+                    // Get city name using coordinates
                     fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${WEATHER_API_KEY}`)
                         .then(response => {
                             if (!response.ok) {
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Search for weather based on user's location input to make everthing clear to them
+    // Search for weather based on user's location input
     function searchLocation() {
         const location = locationInput.value.trim();
         
@@ -73,22 +73,22 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         
-        // Displaying resets for user interactiity
+        // Reset displays
         weatherDisplay.classList.add('hidden');
         activityFilters.classList.add('hidden');
         activitiesDisplay.classList.add('hidden');
         
-        // Get weather data from openweather apis
+        // Get weather data
         getWeatherData(location)
             .then(weatherData => {
                 displayWeatherData(weatherData);
                 weatherDisplay.classList.remove('hidden');
                 
-                // Get activities based on weather and location based on user inputs
+                // Get activities based on weather and location
                 return getActivities(location, weatherData);
             })
             .then(activities => {
-                // Store original activities for filtering to allow acting redo
+                // Store original activities for filtering
                 window.allActivities = activities;
                 
                 displayActivities(activities);
@@ -100,12 +100,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
     }
     
-    // Display weather data on the page
+    // Display weather data on the page (image removed)
     function displayWeatherData(data) {
-        const { temp, description, icon, city, humidity, wind } = data;
+        const { temp, description, city, humidity, wind } = data;
         
         weatherContainer.innerHTML = `
-            <img src="http://openweathermap.org/img/wn/${icon}@2x.png" alt="${description}" class="weather-icon">
             <div class="weather-details">
                 <h3>${city}</h3>
                 <p class="temp">${Math.round(temp)}°C</p>
@@ -116,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     }
     
-    // Display activities to be done based on weather
+    // Display activities (image removed)
     function displayActivities(activities) {
         if (activities.length === 0) {
             activitiesContainer.innerHTML = '<p>No activities found for this location and weather condition.</p>';
@@ -130,7 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
             activityCard.className = 'activity-card';
             
             activityCard.innerHTML = `
-                <img src="${activity.image || '/api/placeholder/300/150'}" alt="${activity.name}" class="activity-image">
                 <div class="activity-details">
                     <h3 class="activity-title">${activity.name}</h3>
                     <div class="activity-info">
@@ -152,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         let filteredActivities = window.allActivities;
         
-        // Filter by type based on user selection
+        // Filter by type
         if (type !== 'all') {
             filteredActivities = filteredActivities.filter(activity => activity.type === type);
         }
@@ -165,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         displayActivities(filteredActivities);
     }
     
-    // Show error message in case of wrong output
+    // Show error message
     function showError(message) {
         alert(message);
     }
