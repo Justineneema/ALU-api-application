@@ -36,12 +36,11 @@ async function getActivities(location, weatherData) {
         const { outdoor, indoor } = ACTIVITY_RECOMMENDATIONS[condition] || ACTIVITY_RECOMMENDATIONS['default'];
         const activities = shuffleArray(condition === 'Clear' || condition === 'Clouds' ? [...outdoor, ...indoor] : [...indoor, ...outdoor]).slice(0, 5);
 
-        // Fetch places for selected activities (Mock API call here) to be used clearly
+        // Fetch places for selected activities 
         return activities.map(keyword => ({
             name: `${capitalize(keyword)} in ${location}`,
             type: outdoor.includes(keyword) ? 'outdoor' : 'indoor',
             description: ACTIVITY_DESCRIPTIONS[keyword] || `Enjoy ${keyword} activities in ${location}.`,
-            image: null 
         }));
     } catch (error) {
         console.error('Error fetching activities:', error);
