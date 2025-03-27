@@ -12,17 +12,17 @@ Check activities through both indoor and outdoor categories plus specific time l
 The app detects and responds to problems when the API system fails or returns invalid data
 
 ## Technologies Used
-# Frontend: HTML, CSS, JavaScript
-# API: OpenWeatherMap API
-# Deployment: Web Server 1 & Web Server 2
-# The Nginx software helps direct traffic equally between our two web servers.
+- Frontend: HTML, CSS, JavaScript
+- API: OpenWeatherMap API
+- Deployment: Web Server 1 & Web Server 2
+- The Nginx software helps direct traffic equally between our two web servers.
 
 ## Directory structure
-weather-activity-app/
+weather-activity-app
 ├── index.html          
-├── css/
+├── css
 │   └── styles.css      
-├── js/
+├── js
 │   ├── app.js          
 │   ├── weather.js      
 │   └── activities.js   
