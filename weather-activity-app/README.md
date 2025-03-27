@@ -1,9 +1,9 @@
-Weather-Based Activity Recommender 
+#### Weather-Based Activity Recommender 
 
-Overview
+## Overview
 My Weather-Based Activity Recommender system presents up-to-date weather information for cities users specify. The application retrieves weather updates from OpenWeatherMap API and shows essential weather information along with current temperature, humidity, wind strength, actual weather conditions plus matching visual indicators. my main objective was to develop an interface that users can easily access and which reacts promptly to device movements.
 
-Features
+## Features
 
 The application shows weather facts today for any city you choose.
 Our system delivers motion plans that match your preferred weather conditions at present timing.
@@ -11,26 +11,26 @@ Check activities through both indoor and outdoor categories plus specific time l
 - User-friendly interface with responsive design
 The app detects and responds to problems when the API system fails or returns invalid data
 
-Technologies Used
+## Technologies Used
 Frontend: HTML, CSS, JavaScript
 API: OpenWeatherMap API
 Deployment: Web Server 1 & Web Server 2
 The Nginx software helps direct traffic equally between our two web servers.
 
-Deployment Details
+## Deployment Details
 I launched my application across two web servers named Web Server 1 and Web Server 2 while creating Nginx as the traffic manager between them. This setup ensures:
 
 Each incoming request should go to any available web server to keep one server from getting too busy
 -High availability and better performance
 Our system keeps working with all traffic despite one server being unavailable.
 
-How to Use
+## How to Use
 1. Start using the application through your internet browser.
 2. Enter city or provide your location and search using the input box
 3. Press the search button to retrieve the weather data.
 4. Your web application shows current weather details plus recommended activities based on weather conditions 
 
-Setup & Installation
+## Setup & Installation
 1. Clone the repository:
 git clone https://github.com/Justineneema/ALU-api-application.git
 
@@ -48,13 +48,13 @@ const config = {
 
 4. You can access the application through the URL http://localhost:5000.
 `
-Challenges Faced
+## Challenges Faced
 
 - API Key Security: Ensuring that API keys aren't exposed in the client-side code was a challenge. I chose to use environment variables and server-side proxy routes to make API calls securely.
 - Error Handling: Developing robust error handling for API failures and invalid user inputs required careful planning.
 - Load Balancer Setup: Configuring the load balancer to correctly distribute traffic while maintaining session consistency took some experimentation.
 
-Future Improvements
+## Future Improvements
 
 - Add more detailed activity information
 - Implement caching to reduce API calls
