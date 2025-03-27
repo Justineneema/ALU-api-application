@@ -12,10 +12,22 @@ Check activities through both indoor and outdoor categories plus specific time l
 The app detects and responds to problems when the API system fails or returns invalid data
 
 ## Technologies Used
-Frontend: HTML, CSS, JavaScript
-API: OpenWeatherMap API
-Deployment: Web Server 1 & Web Server 2
-The Nginx software helps direct traffic equally between our two web servers.
+# Frontend: HTML, CSS, JavaScript
+# API: OpenWeatherMap API
+# Deployment: Web Server 1 & Web Server 2
+# The Nginx software helps direct traffic equally between our two web servers.
+
+## Directory structure
+weather-activity-app/
+├── index.html          
+├── css/
+│   └── styles.css      
+├── js/
+│   ├── app.js          
+│   ├── weather.js      
+│   └── activities.js   
+├── .env                
+└── README.md           
 
 ## Deployment Details
 I launched my application across two web servers named Web Server 1 and Web Server 2 while creating Nginx as the traffic manager between them. This setup ensures:
@@ -62,9 +74,12 @@ const config = {
 - Enhance the UI with more weather details and activity images
 - Implement progressive web app features for offline functionality
 
-Credits
+## Credits
 
 - Weather data provided by [OpenWeatherMap](https://openweathermap.org/)
 - Activity data powered by [Google Places API](https://developers.google.com/maps/documentation/places/web-service/overview)
 - Weather icons from [OpenWeatherMap](https://openweathermap.org/weather-conditions)
 -justineneema: For developing and deploying the application.
+
+## licence 
+MIT License
