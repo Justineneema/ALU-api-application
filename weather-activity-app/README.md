@@ -1,4 +1,4 @@
-#### Weather-Based Activity Recommender 
+## Weather-Based Activity Recommender 
 
 ## Overview
 My Weather-Based Activity Recommender system presents up-to-date weather information for cities users specify. The application retrieves weather updates from OpenWeatherMap API and shows essential weather information along with current temperature, humidity, wind strength, actual weather conditions plus matching visual indicators. my main objective was to develop an interface that users can easily access and which reacts promptly to device movements.
