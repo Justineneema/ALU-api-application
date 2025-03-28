@@ -1,5 +1,5 @@
 // addding API of google maps
-const PLACES_API_KEY = 'a68a2891d083c249013754a89cdd917e';
+const PLACES_API_KEY = process.env.PLACES_API_KEY;
 
 // Activity categories based on weather
 const ACTIVITY_RECOMMENDATIONS = {

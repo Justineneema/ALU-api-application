@@ -1,5 +1,5 @@
 // adding API from open weather
-const WEATHER_API_KEY = '91d7dccb6ca5fede6ed97b0b0c2f570d';
+const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
 
 // Get weather data for a location 
 async function getWeatherData(location) {
