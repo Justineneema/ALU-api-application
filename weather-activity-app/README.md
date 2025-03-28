@@ -74,6 +74,8 @@ const config = {
 - Enhance the UI with more weather details and activity images
 - Implement progressive web app features for offline functionality
 
+## DEmo video
+
 ## Credits
 
 - Weather data provided by [OpenWeatherMap](https://openweathermap.org/)
