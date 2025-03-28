@@ -18,15 +18,12 @@ The app detects and responds to problems when the API system fails or returns in
 - The Nginx software helps direct traffic equally between our two web servers.
 
 ## Directory structure
-weather-activity-app
 ├── index.html          
-├── css
-│   └── styles.css      
-├── js
-│   ├── app.js          
-│   ├── weather.js      
-│   └── activities.js   
-├── .env                
+├── styles.css      
+├── app.js          
+├── weather.js      
+└── activities.js   
+├── .gitignore|-.env                
 └── README.md           
 
 ## Deployment Details
