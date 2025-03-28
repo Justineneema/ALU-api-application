@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Activity Recommender</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 </head>
+
+<!-- weather activity recomender app -->
 <body>
     <header>
         <h1>Weather-Based Activity Recommender</h1>
@@ -21,13 +25,19 @@
             </div>
         </section>
         
-        <section id="weather-display" class="hidden">
-            <h2>Current Weather</h2>
-            <div id="weather-container">
-                <!-- where Weather data will be displayed -->
-            </div>
+        <!-- section of the map -->
+        <section id="map-container">
+            <h2>WORLD MAP</h2>
+            <div id="map"></div>
         </section>
         
+        <!-- displaying the weather based on what user entered -->
+        <section id="weather-display" class="hidden">
+            <h2>Current Weather</h2>
+            <div id="weather-container"></div>
+        </section>
+        
+        <!-- recommended activities -->
         <section id="activity-filters" class="hidden">
             <h2>Filter Activities</h2>
             <div class="filter-container">
@@ -39,33 +49,40 @@
                         <option value="outdoor">Outdoor</option>
                     </select>
                 </div>
-                
                 <div class="filter-group">
                     <label for="duration">Duration:</label>
                     <select id="duration">
                         <option value="all">All</option>
-                        <option value="short">Short (< 1 hour)</option>
+                        <option value="short">Short (&lt; 1 hour)</option>
                         <option value="medium">Medium (1-3 hours)</option>
-                        <option value="long">Long (> 3 hours)</option>
+                        <option value="long">Long (&gt; 3 hours)</option>
                     </select>
                 </div>
-                
                 <button id="apply-filters">Apply Filters</button>
             </div>
         </section>
         
+        <!-- activities based on weather  -->
         <section id="activities-display" class="hidden">
             <h2>Recommended Activities</h2>
-            <div id="activities-container">
-                <!-- Activities must be displayed in this slot -->
-            </div>
+            <div id="activities-container"></div>
         </section>
     </main>
     
+    <!-- the footer section -->
     <footer>
         <p>Powered by OpenWeatherMap API and Google Places API</p>
     </footer>
     
+    <!-- script to show the behavior of the map -->
+    <script>
+        var map = L.map('map').setView([20, 0], 2);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+    </script>
+    
+    <!-- linking the external scripts used  -->
     <script src="js/weather.js"></script>
     <script src="js/activities.js"></script>
     <script src="js/app.js"></script>

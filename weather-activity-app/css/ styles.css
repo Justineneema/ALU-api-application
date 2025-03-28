@@ -1,11 +1,13 @@
+/* the color to be used in the web page */
 :root {
-    --primary-color: #496578;      /* Bright sky blue */
-    --secondary-color: #68ca91;    /* Fresh green for activities */
-    --background-color: #f0f4f8;   /* Light, soft blue-gray */
-    --text-color: #4a6887;         /* Deep navy blue */
-    --accent-color: #753a33;       /* Vibrant red for buttons */
+    --primary-color: #285989;     
+    --secondary-color: #356d44;    
+    --background-color: #1f2526;   
+    --text-color: #bda0a0;         
+    --accent-color: #8e2c2c;       
 }
 
+/* creating the font and the space on the page */
 * {
     margin: 0;
     padding: 0;
@@ -22,12 +24,13 @@ body {
     min-height: 100vh;
 }
 
+/* creating perfect header */
 header {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--text-color);
     text-align: center;
     padding: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 header h1 {
@@ -40,16 +43,18 @@ main {
     max-width: 800px;
     width: 95%;
     margin: 2rem auto;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    backdrop-filter: blur(5px);
 }
 
+/* creating beautiful section */
 section {
     margin-bottom: 2rem;
     padding: 1rem;
-    background-color: #f9fafb;
+    background-color: rgba(0, 0, 0, 0.2);
     border-radius: 8px;
 }
 
@@ -60,16 +65,19 @@ h2 {
     margin-bottom: 1rem;
 }
 
+/* making container good for the user */
 .input-container {
     display: flex;
     gap: 1rem;
 }
 
-input, select, button {
+input, select, button, textarea {
     padding: 0.75rem;
-    border: 1px solid #e0e4e8;
+    border: 1px solid #4a4a4a;
     border-radius: 4px;
     font-size: 1rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
 }
 
 input {
@@ -77,37 +85,110 @@ input {
     transition: border-color 0.3s ease;
 }
 
-input:focus {
+input:focus, textarea:focus {
     outline: none;
     border-color: var(--primary-color);
 }
 
+/* allowing user to submit what they have done */
 button {
     background-color: var(--accent-color);
-    color: white;
+    color: var(--text-color);
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #c0392b;
+    background-color: #6b1515;
 }
 
+/* fetch the location information */
 #get-location {
     background-color: var(--secondary-color);
 }
 
 #get-location:hover {
-    background-color: #27ae60;
+    background-color: #1f472a;
+}
+
+#save-notes {
+    background-color: #4a4a4a;
+    margin-top: 0.5rem;
+}
+
+#save-notes:hover {
+    background-color: #3a3a3a;
+}
+
+
+/* getting more information about the weather */
+.weather-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-main {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.weather-icon {
+    font-size: 2.5rem;
+}
+
+/* allowing user to see the temperature given */
+.temperature {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.weather-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+/* the starting value of the weather */
+.stat {
+    background-color: #2a2a2a;
+    padding: 0.75rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.stat p {
+    margin: 0;
+    color: #ffffff;
+}
+
+.stat .value {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+/* where user enter the data */
+textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
 }
 
 .filter-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 }
 
+/* filter group */
 .filter-group {
     display: flex;
     flex-direction: column;
@@ -115,12 +196,55 @@ button:hover {
 }
 
 select {
-    width: 200px;
+    width: 150px;
 }
 
+/* card to display activity based on weather */
+.activity-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.activity-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.activity-title {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* everthing related to the activity */
+.activity-info {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.9rem;
+    color: #bbbbbb;
+}
+
+.activity-description {
+    margin: 0.5rem 0;
+}
+
+/* where user can see the whole world map */
+.map-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.map-link:hover {
+    text-decoration: underline;
+}
+
+/* footer showing everying and copyright */
 footer {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--text-color);
     text-align: center;
     padding: 1rem;
     margin-top: auto;
@@ -130,154 +254,38 @@ footer {
     display: none;
 }
 
+/* container of the map */
+#map-container {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: rgba(36, 34, 34, 0.2);
+    border-radius: 8px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+
+/* Responsiveness of the web page */
 @media (max-width: 600px) {
     .input-container, 
     .filter-container {
         flex-direction: column;
     }
 
-    input, select, button {
+    input, select, button, textarea {
         width: 100%;
     }
-}:root {
-    --primary-color: #3498db;      /* Bright sky blue */
-    --secondary-color: #2ecc71;    /* Fresh green for activities */
-    --background-color: #f0f4f8;   /* Light, soft blue-gray */
-    --text-color: #2c3e50;         /* Deep navy blue */
-    --accent-color: #e74c3c;       /* Vibrant red for buttons */
-}
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-    line-height: 1.6;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-header {
-    background-color: var(--primary-color);
-    color: white;
-    text-align: center;
-    padding: 1.5rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-header h1 {
-    font-size: 2.5rem;
-    font-weight: 300;
-}
-
-main {
-    flex-grow: 1;
-    max-width: 800px;
-    width: 95%;
-    margin: 2rem auto;
-    background-color: white;
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-section {
-    margin-bottom: 2rem;
-    padding: 1rem;
-    background-color: #f9fafb;
-    border-radius: 8px;
-}
-
-h2 {
-    color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.input-container {
-    display: flex;
-    gap: 1rem;
-}
-
-input, select, button {
-    padding: 0.75rem;
-    border: 1px solid #e0e4e8;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-input {
-    flex-grow: 1;
-    transition: border-color 0.3s ease;
-}
-
-input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-}
-
-button {
-    background-color: var(--accent-color);
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #c0392b;
-}
-
-#get-location {
-    background-color: var(--secondary-color);
-}
-
-#get-location:hover {
-    background-color: #27ae60;
-}
-
-.filter-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.filter-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-select {
-    width: 200px;
-}
-
-footer {
-    background-color: var(--primary-color);
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    margin-top: auto;
-}
-
-.hidden {
-    display: none;
-}
-
-@media (max-width: 600px) {
-    .input-container, 
-    .filter-container {
-        flex-direction: column;
+    .weather-stats {
+        grid-template-columns: 1fr;
     }
 
-    input, select, button {
+    select {
         width: 100%;
     }
 }
