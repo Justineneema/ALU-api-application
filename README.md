@@ -11,6 +11,9 @@ Check activities through both indoor and outdoor categories plus specific time l
 - User-friendly interface with responsive design
 The app detects and responds to problems when the API system fails or returns invalid data
 
+## DEmo video
+Youtube video: https://www.youtube.com/watch?v=e0gxCpFXNLQ
+
 ## Technologies Used
 - Frontend: HTML, CSS, JavaScript
 - API: OpenWeatherMap API
@@ -32,6 +35,49 @@ I launched my application across two web servers named Web Server 1 and Web Serv
 Each incoming request should go to any available web server to keep one server from getting too busy
 -High availability and better performance
 Our system keeps working with all traffic despite one server being unavailable.
+
+## Web Server Deployment (Web01 and Web02)
+
+1. SSH into the web server
+2. Clone the repository to `/var/www/html`
+3. Create a `.env` file with API keys
+4. Configure Nginx to serve the application:
+server {
+listen 80;
+server_name webXX.www.justineneema.tech.com;
+root /var/www/weather-activity-app;
+index index.html;
+location / {
+try_files $uri $uri/ =404;
+}
+}
+
+## Load Balancer Configuration (Lb01)
+
+1. Install Nginx on the load balancer server
+2. Configure Nginx as a load balancer:
+upstream backend {
+server web01.www.justineneema.tech.com weight=1;
+server web02.www.justineneema.tech.com weight=1;
+}
+
+server {
+listen 80;
+server_name lb01.www.justineneema.tech.com;
+
+
+   location / {
+       proxy_pass http://backend;
+       proxy_set_header Host $host;
+       proxy_set_header X-Real-IP $remote_addr;
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+       proxy_set_header X-Forwarded-Proto $scheme;
+   }
+}
+3. Enable the site and restart Nginx
+
+The application is now accessible through the load balancer at `http://lb01.www.justineneema.tech.com.
+
 
 ## How to Use
 1. Start using the application through your internet browser.
@@ -71,7 +117,6 @@ const config = {
 - Enhance the UI with more weather details and activity images
 - Implement progressive web app features for offline functionality
 
-## DEmo video
 
 ## Credits
 
